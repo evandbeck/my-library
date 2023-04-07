@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-function Authors() {
+function Authors(authors) {
+    console.log(authors);
+    // let authorsList = authors.map(author => <div>{author.name}</div>)
   return (
-    <div>Authors</div>
+    <div>
+        <h1>Authors</h1>
+        {/* {authorsList} */}
+    </div>
   )
 }
 
