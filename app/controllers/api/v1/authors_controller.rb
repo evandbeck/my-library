@@ -13,6 +13,11 @@ class Api::V1::AuthorsController < ApplicationController
     render json: @author
   end
 
+  # def authors_books
+  #   @author = Author.find(params[:id])
+  #   render json: @authors.books
+  # end
+
   # POST /authors
   def create
     @author = Author.new(author_params)
