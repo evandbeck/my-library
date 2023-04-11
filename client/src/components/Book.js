@@ -2,6 +2,7 @@ import React from 'react'
 
 function Book({ book }) {
     const {title, description, read, rating} = book;
+    
   return (
     <div className="BookCard">
         <h3>{title}</h3>
