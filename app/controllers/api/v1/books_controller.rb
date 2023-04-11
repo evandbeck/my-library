@@ -8,11 +8,11 @@ class Api::V1::BooksController < ApplicationController
     render json: @books
   end
 
-  def books
-    @books = Book.all
+  # def books
+  #   @books = Book.all
 
-    render json: @books
-  end
+  #   render json: @books
+  # end
 
   # GET /books/1
   def show
