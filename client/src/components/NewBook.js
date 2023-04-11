@@ -13,6 +13,7 @@ function NewBook() {
         axios.post(API_BOOKS, {
             title: bookTitle,
             description: bookDescription,
+            author_id: 1
         })
         .then(resp => console.log(resp))
         .catch(error => console.log(error))
