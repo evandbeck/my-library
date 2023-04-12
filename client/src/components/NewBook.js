@@ -5,6 +5,8 @@ import { useState } from 'react';
 function NewBook() {
     const [bookTitle, setBookTitle] = useState("");
     const [bookDescription, setBookDescription] = useState("")
+    const [bookRead, setBookRead] = useState(false)
+    const [bookRating, setBookRating] = useState(0)
     const [bookOwned, setBookOwned] = useState(false)
     const [bookOpen, setBookOpen] = useState(false)
 
@@ -15,13 +17,22 @@ function NewBook() {
         axios.post(API_BOOKS, {
             title: bookTitle,
             description: bookDescription,
-            rating: "",
+            read: bookRead,
+            rating: bookRating,
             own: bookOwned,
-            open: "",
+            open: bookOpen,
             author_id: 1
         })
         .then(resp => console.log(resp))
         .catch(error => console.log(error))
+    }
+
+    function handleRead() {
+        setBookRead(bookRead => !bookRead)
+    }
+
+    function handleRating() {
+        setBookRating(bookRating => !bookRating)
     }
 
     function handleOwned() {
@@ -39,12 +50,28 @@ function NewBook() {
             <div>
                 <input type="text" required maxLength="30" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}/>
                 <span></span>
-                <label>Book Title</label>
+                <label>Book Title:</label>
             </div>
             <div>
                 <input type="text" required maxLength="100" value={bookDescription} onChange={(e) => setBookDescription(e.target.value)} size="50"/>
                 <span></span>
-                <label>Book Description</label>
+                <label>Book Description:</label>
+            </div>
+            <div>
+                <input type="checkbox" id="read" name="read" checked={bookRead} onChange={handleRead}/>
+                <span></span>
+                <label>Read?</label>
+            </div>
+            <div>
+                <select id="rating" name="rating" value={bookRating} onChange={handleRating}>
+                    <option value="1">1</option>
+                    <option value="2">2</option> 
+                    <option value="3">3</option> 
+                    <option value="4">4</option>  
+                    <option value="5">5</option> 
+                </select>
+                <span></span>
+                <label>Rating:</label>
             </div>
             <div>
                 <input type="checkbox" id="owned" name="owned" checked={bookOwned} onChange={handleOwned}/>
