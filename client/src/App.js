@@ -1,8 +1,12 @@
 import './App.css';
 import axios from 'axios';
-import Authors from './components/Authors';
-import BooksContainer from './components/BooksContainer';
 import { useState, useEffect } from 'react';
+
+import Header from './components/Header';
+import Reading from './components/Reading';
+import Read from './components/Read';
+import Wishlist from './components/Wishlist';
+import Library from './components/Library';
 
 const API_BOOKS = "http://localhost:3000/api/v1/books";
 
@@ -26,7 +30,11 @@ function App() {
   return (
     <div className="App">
       <h1>My Library</h1>
-      <BooksContainer books={books}/>
+      <Header />
+      <Reading />
+      <Read />
+      <Wishlist />
+      <Library books={books}/>
     </div>
   );
 }

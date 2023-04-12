@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Book from './Book';
 import NewBook from './NewBook';
 
-function BooksContainer({ books }) {
+function Library({ books }) {
     const [showAddBook, setShowAddBook] = useState(false)
 
     let booksList = books.map(book => <Book key={book.id} book={book} />)
@@ -22,4 +22,4 @@ function BooksContainer({ books }) {
   )
 }
 
-export default BooksContainer
+export default Library
