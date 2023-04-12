@@ -8,7 +8,7 @@ import Read from './components/Read';
 import Wishlist from './components/Wishlist';
 import Library from './components/Library';
 
-const API_BOOKS = "http://localhost:3000/api/v1/books";
+const API_BOOKS = "http://localhost:3000/api/v1/owned";
 
 function getAPIBooks() {
   return axios.get(API_BOOKS).then(resp => resp.data);

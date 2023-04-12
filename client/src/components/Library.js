@@ -14,7 +14,7 @@ function Library({ books }) {
 
   return (
     <div className="BookContainer">
-        <h1>Books</h1>
+        <h1>Library</h1>
         {/* <button onClick={handleShowAddBook}>{showAddBook ? "Close Form" : "Add New Book"}</button>
         {showAddBook ? <NewBook /> : null} */}
         {booksList}

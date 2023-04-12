@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      # # get "books", to: "books#books"
+      get "owned", to: "books#owned"
       resources :authors
       resources :books
     end

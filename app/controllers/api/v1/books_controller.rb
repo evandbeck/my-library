@@ -8,11 +8,11 @@ class Api::V1::BooksController < ApplicationController
     render json: @books
   end
 
-  # def books
-  #   @books = Book.all
+  def owned
+    @books = Book.where("own = true")
 
-  #   render json: @books
-  # end
+    render json: @books
+  end
 
   # GET /books/1
   def show
@@ -52,6 +52,6 @@ class Api::V1::BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:title, :description, :read, :rating, :author_id)
+      params.require(:book).permit(:title, :description, :read, :rating, :own, :open, :author_id)
     end
 end

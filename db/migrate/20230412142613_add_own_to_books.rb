@@ -1,0 +1,5 @@
+class AddOwnToBooks < ActiveRecord::Migration[7.0]
+  def change
+    add_column :books, :own, :boolean
+  end
+end
