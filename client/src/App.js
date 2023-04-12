@@ -8,33 +8,39 @@ import Read from './components/Read';
 import Wishlist from './components/Wishlist';
 import Library from './components/Library';
 
-const API_BOOKS = "http://localhost:3000/api/v1/owned";
+const API_READING = "http://localhost:3000/api/v1/reading";
+const API_LIBRARY = "http://localhost:3000/api/v1/owned";
 
-function getAPIBooks() {
-  return axios.get(API_BOOKS).then(resp => resp.data);
+async function getAPILibrary() {
+  const resp = await axios.get(API_LIBRARY);
+  return resp.data;
+}
+
+async function getAPIReading() {
+  const resp = await axios.get(API_READING);
+  return resp.data;
 }
 
 function App() {
-  const [books, setBooks] = useState([]);
+  const [library, setLibrary] = useState([]);
+  const [reading, setReading] = useState([]);
 
   useEffect(() => {
-    let mounted = true;
-    getAPIBooks().then(items => {
-      if(mounted) {
-        setBooks(items);
-      }
-    });
-    return () => (mounted = false);
+    getAPILibrary().then(data => setLibrary(data));
+  }, []);
+
+  useEffect(() => {
+    getAPIReading().then(data => setReading(data));
   }, []);
 
   return (
     <div className="App">
       <h1>My Library</h1>
       <Header />
-      <Reading />
+      <Reading reading={reading}/>
       <Read />
       <Wishlist />
-      <Library books={books}/>
+      <Library library={library}/>
     </div>
   );
 }

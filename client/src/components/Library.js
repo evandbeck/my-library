@@ -3,10 +3,10 @@ import React from 'react';
 import Book from './Book';
 // import NewBook from './NewBook';
 
-function Library({ books }) {
+function Library({ library }) {
     // const [showAddBook, setShowAddBook] = useState(false)
 
-    let booksList = books.map(book => <Book key={book.id} book={book} />)
+    let libraryList = library.map(book => <Book key={book.id} book={book} />)
 
     // function handleShowAddBook() {
     //   setShowAddBook(showAddBook => !showAddBook);
@@ -17,7 +17,7 @@ function Library({ books }) {
         <h1>Library</h1>
         {/* <button onClick={handleShowAddBook}>{showAddBook ? "Close Form" : "Add New Book"}</button>
         {showAddBook ? <NewBook /> : null} */}
-        {booksList}
+        {libraryList}
     </div>
   )
 }

@@ -69,7 +69,7 @@ books = Book.create(
         read: false,
         rating: 0,
         own: true,
-        open: false,
+        open: true,
         author_id: 6}
 
     ]

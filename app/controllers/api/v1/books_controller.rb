@@ -8,12 +8,6 @@ class Api::V1::BooksController < ApplicationController
     render json: @books
   end
 
-  def owned
-    @books = Book.where("own = true")
-
-    render json: @books
-  end
-
   # GET /books/1
   def show
     render json: @book
@@ -42,6 +36,19 @@ class Api::V1::BooksController < ApplicationController
   # DELETE /books/1
   def destroy
     @book.destroy
+  end
+
+  # Custom Actions
+  def reading
+    @books = Book.where("open = true")
+
+    render json: @books
+  end
+
+  def owned
+    @books = Book.where("own = true")
+
+    render json: @books
   end
 
   private
