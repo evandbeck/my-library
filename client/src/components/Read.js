@@ -1,8 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Book from './Book';
 
-function Read() {
+function Read({ read }) {
+
+    let readList = read.map(book => <Book key={book.id} book={book} />)
+
   return (
-    <div>Read</div>
+    <div>
+        <h1>Read</h1>
+        {readList}
+    </div>
   )
 }
 

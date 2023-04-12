@@ -45,6 +45,12 @@ class Api::V1::BooksController < ApplicationController
     render json: @books
   end
 
+  def read
+    @books = Book.where("read = true")
+
+    render json: @books
+  end
+
   def owned
     @books = Book.where("own = true")
 

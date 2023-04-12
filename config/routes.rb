@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get "reading", to: "books#reading"
+      get "read", to: "books#read"
       get "owned", to: "books#owned"
       resources :authors
       resources :books
