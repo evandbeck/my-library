@@ -57,6 +57,12 @@ class Api::V1::BooksController < ApplicationController
     render json: @books
   end
 
+  def wishlist
+    @books = Book.where("own = false")
+
+    render json: @books
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_book

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get "reading", to: "books#reading"
       get "read", to: "books#read"
+      get "wishlist", to: "books#wishlist"
       get "owned", to: "books#owned"
       resources :authors
       resources :books

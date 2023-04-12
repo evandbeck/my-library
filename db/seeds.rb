@@ -70,6 +70,13 @@ books = Book.create(
         rating: 0,
         own: true,
         open: true,
+        author_id: 6},
+        {title: "Four Thousand Weeks",
+        description: "Time Management for Mortals",
+        read: false,
+        rating: 0,
+        own: false,
+        open: false,
         author_id: 6}
 
     ]

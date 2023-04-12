@@ -1,8 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Book from './Book';
 
-function Wishlist() {
+function Wishlist({ wishlist }) {
+
+    let wishlistList = wishlist.map(book => <Book key={book.id} book={book} />)
+
   return (
-    <div>Wishlist</div>
+    <div>
+        <h1>Wishlist</h1>
+        {wishlistList}
+    </div>
   )
 }
 

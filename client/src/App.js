@@ -10,10 +10,11 @@ import Library from './components/Library';
 
 const API_READING = "http://localhost:3000/api/v1/reading";
 const API_READ = "http://localhost:3000/api/v1/read";
+const API_WISHLIST = "http://localhost:3000/api/v1/wishlist";
 const API_LIBRARY = "http://localhost:3000/api/v1/owned";
 
-async function getAPILibrary() {
-  const resp = await axios.get(API_LIBRARY);
+async function getAPIReading() {
+  const resp = await axios.get(API_READING);
   return resp.data;
 }
 
@@ -22,18 +23,24 @@ async function getAPIRead() {
   return resp.data;
 }
 
-async function getAPIReading() {
-  const resp = await axios.get(API_READING);
+async function getAPIWishlist() {
+  const resp = await axios.get(API_WISHLIST);
+  return resp.data;
+}
+
+async function getAPILibrary() {
+  const resp = await axios.get(API_LIBRARY);
   return resp.data;
 }
 
 function App() {
-  const [library, setLibrary] = useState([]);
-  const [read, setRead] = useState([]);
   const [reading, setReading] = useState([]);
+  const [read, setRead] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
+  const [library, setLibrary] = useState([]);
 
   useEffect(() => {
-    getAPILibrary().then(data => setLibrary(data));
+    getAPIReading().then(data => setReading(data));
   }, []);
 
   useEffect(() => {
@@ -41,7 +48,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getAPIReading().then(data => setReading(data));
+    getAPIWishlist().then(data => setWishlist(data));
+  }, []);
+
+  useEffect(() => {
+    getAPILibrary().then(data => setLibrary(data));
   }, []);
 
   return (
@@ -50,7 +61,7 @@ function App() {
       <Header />
       <Reading reading={reading}/>
       <Read read={read}/>
-      <Wishlist />
+      <Wishlist wishlist={wishlist}/>
       <Library library={library}/>
     </div>
   );
