@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import NewAuthor from './NewAuthor';
 
-function NewBook({ authors }) {
+function NewBook({ authors, API_AUTHORS }) {
     const [bookTitle, setBookTitle] = useState("");
     const [bookAuthor, setBookAuthor] = useState("")
     const [bookDescription, setBookDescription] = useState("")
@@ -32,7 +32,8 @@ function NewBook({ authors }) {
         .catch(error => console.log(error))
     }
 
-    function handleShowAddAuthor() {
+    function handleShowAddAuthor(e) {
+        e.preventDefault();
         setShowAddAuthor(showAddAuthor => !showAddAuthor);
     }
 
@@ -62,10 +63,6 @@ function NewBook({ authors }) {
                 <select id="author" name="author" value={bookAuthor} onChange={(e) => setBookAuthor(e.target.value)}>
                     {authorList}
                 </select>
-                <label>Don't see the Author? Add one: </label>
-                    <button onClick={handleShowAddAuthor}>{showAddAuthor ? "Close" : "Add New Author"}</button>
-                    {showAddAuthor ? <NewAuthor /> : null}
-                <span></span>
             </div>
             <div>
                 <label>Book Description:</label>
@@ -106,6 +103,12 @@ function NewBook({ authors }) {
                 <button>Add Book</button>
             </div>
         </form>
+
+        <label>Don't see the Author? </label>
+            <button onClick={(e) => handleShowAddAuthor(e)}>{showAddAuthor ? "Close" : "Add New Author"}</button>
+            {showAddAuthor ? <NewAuthor /> : null}
+        <span></span>
+
     </div>
   )
 }

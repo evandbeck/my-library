@@ -26,7 +26,7 @@ function Header() {
     <div>
         <h1>Header</h1>
         <button onClick={handleShowAddBook}>{showAddBook ? "Close Form" : "Add New Book"}</button>
-        {showAddBook ? <NewBook authors={authors}/> : null}
+        {showAddBook ? <NewBook authors={authors} /> : null}
     </div>
   )
 }

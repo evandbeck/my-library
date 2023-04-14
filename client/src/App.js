@@ -7,6 +7,7 @@ import Reading from './components/Reading';
 import Read from './components/Read';
 import Wishlist from './components/Wishlist';
 import Library from './components/Library';
+// import NewAuthor from './components/NewAuthor';
 
 const API_READING = "http://localhost:3000/api/v1/reading";
 const API_READ = "http://localhost:3000/api/v1/read";
