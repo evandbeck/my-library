@@ -42,17 +42,8 @@ function App() {
 
   useEffect(() => {
     getAPIReading().then(data => setReading(data));
-  }, []);
-
-  useEffect(() => {
     getAPIRead().then(data => setRead(data));
-  }, []);
-
-  useEffect(() => {
     getAPIWishlist().then(data => setWishlist(data));
-  }, []);
-
-  useEffect(() => {
     getAPILibrary().then(data => setLibrary(data));
   }, []);
 
