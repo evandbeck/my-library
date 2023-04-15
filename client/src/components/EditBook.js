@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react';
+import axios from 'axios';
 
 function EditBook({ book, handleShowEditBook }) {
-    const {title, description, read, rating, own, open} = book;
+    const {id, title, description, read, rating, own, open} = book;
     
     const [bookTitle, setBookTitle] = useState(title);
     const [bookAuthor, setBookAuthor] = useState("")
@@ -12,8 +13,21 @@ function EditBook({ book, handleShowEditBook }) {
     const [bookOwned, setBookOwned] = useState(own)
     const [bookOpen, setBookOpen] = useState(open)
 
+    const API_BOOKS = `http://localhost:3000/api/v1/books/${id}`;
+
     function updateBook(e) {
         e.preventDefault();
+        axios.patch(API_BOOKS, {
+            title: bookTitle,
+            description: bookDescription,
+            read: bookRead,
+            rating: bookRating,
+            own: bookOwned,
+            open: bookOpen,
+            author_id: 1
+        })
+        .then(resp => console.log(resp))
+        .catch(error => console.log(error))
     }
 
     function handleRead() {
