@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import NewAuthor from './NewAuthor';
 
-function NewBook({ authors, API_AUTHORS }) {
+function NewBook({ authors }) {
     const [bookTitle, setBookTitle] = useState("");
     const [bookAuthor, setBookAuthor] = useState("")
     const [bookDescription, setBookDescription] = useState("")

@@ -1,15 +1,38 @@
 import React from 'react'
+import { useState } from 'react';
 
-function EditBook({ book }) {
-    const {title, description, read, rating} = book;
+function EditBook({ book, handleShowEditBook }) {
+    const {title, description, read, rating, own, open} = book;
+    
+    const [bookTitle, setBookTitle] = useState(title);
+    const [bookAuthor, setBookAuthor] = useState("")
+    const [bookDescription, setBookDescription] = useState(description)
+    const [bookRead, setBookRead] = useState(read)
+    const [bookRating, setBookRating] = useState(rating)
+    const [bookOwned, setBookOwned] = useState(own)
+    const [bookOpen, setBookOpen] = useState(open)
 
-    console.log(title)
+    function updateBook(e) {
+        e.preventDefault();
+    }
+
+    function handleRead() {
+        setBookRead(bookRead => !bookRead)
+    }
+
+    function handleOwned() {
+        setBookOwned(bookOwned => !bookOwned)
+    }
+
+    function handleOpen() {
+        setBookOpen(bookOpen => !bookOpen)
+    }
 
   return (
     <div>
-        <p>Editing</p>
-        {/* <h1>Edit Book</h1>
-        <form onSubmit={submitNewBook}>
+        <button onClick={handleShowEditBook}>Close Editor</button>
+        <h1>Edit Book</h1>
+        <form onSubmit={updateBook}>
             <div>
                 <label>Book Title:</label>
                 <input type="text" required maxLength="30" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}/>
@@ -18,7 +41,7 @@ function EditBook({ book }) {
             <div>
                 <label>Author:</label>
                 <select id="author" name="author" value={bookAuthor} onChange={(e) => setBookAuthor(e.target.value)}>
-                    {authorList}
+                    {/* {authorList} */}
                 </select>
             </div>
             <div>
@@ -57,9 +80,9 @@ function EditBook({ book }) {
             </div> : null}
 
             <div>
-                <button>Add Book</button>
+                <button>Update Book</button>
             </div>
-        </form> */}
+        </form>
     </div>
   )
 }

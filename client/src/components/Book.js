@@ -3,8 +3,9 @@ import { useState } from 'react';
 import EditBook from './EditBook';
 
 function Book({ book }) {
-    const [editBook, setEditBook] = useState(false)
-    const {title, description, read, rating} = book;
+  const {title, description, read, rating} = book;
+  
+  const [editBook, setEditBook] = useState(false)
     
     function handleShowEditBook() {
       setEditBook(editBook => !editBook)
@@ -21,7 +22,7 @@ function Book({ book }) {
     </div>
     )
 
-    const displayEditBook = (<EditBook book={book} />)
+    const displayEditBook = (<EditBook book={book} handleShowEditBook={handleShowEditBook} />)
 
   return (
     <div>
