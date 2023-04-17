@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import NewAuthor from './NewAuthor';
 
-function NewBook({ authors }) {
+function NewBook({ authors, showAddBook, setShowAddBook }) {
     const [bookTitle, setBookTitle] = useState("");
     const [bookAuthor, setBookAuthor] = useState("")
     const [bookDescription, setBookDescription] = useState("")
@@ -29,7 +29,8 @@ function NewBook({ authors }) {
             author_id: bookAuthor
         })
         .then(resp => console.log(resp))
-        .catch(error => console.log(error))
+        .catch(error => console.log(error));
+        setShowAddBook(showAddBook => !showAddBook)
     }
 
     function handleShowAddAuthor(e) {
