@@ -24,7 +24,7 @@ function EditBook({ book, handleShowEditBook }) {
             rating: bookRating,
             own: bookOwned,
             open: bookOpen,
-            author_id: 1
+            author_id: bookAuthor
         })
         .then(resp => console.log(resp))
         .catch(error => console.log(error))
