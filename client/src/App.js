@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>My Library</h1>
+      <h1 className="text-3xl font-bold">My Library</h1>
       <Header />
       <Reading reading={reading}/>
       <Read read={read}/>
