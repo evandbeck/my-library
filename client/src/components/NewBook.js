@@ -51,7 +51,8 @@ function NewBook({ authors, showAddBook, setShowAddBook }) {
     }
 
   return (
-    <div>
+    // I need to learn this shit.
+    <div className="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
         <h1>Add New Book</h1>
         <form onSubmit={submitNewBook}>
             <div>
