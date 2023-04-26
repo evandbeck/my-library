@@ -35,18 +35,18 @@ function Book({ book }) {
         </div>
         <hr className="m-3"></hr>
         <div>
-          <button className="bg-sky-500 hover:bg-sky-600 rounded-md p-2 m-2 text-sm font-semibold text-white"
-            onClick={handleShowEditBook}>Update</button>
-          <button className="bg-sky-500 hover:bg-sky-600 rounded-md p-2 m-2 text-sm font-semibold text-white"
+          <button className="bg-sky-500 hover:bg-sky-600 rounded-md p-2 m-2 w-[80px] text-sm font-semibold text-white"
+            onClick={handleShowEditBook}>Edit</button>
+          <button className="bg-sky-500 hover:bg-sky-600 rounded-md p-2 m-2 w-[80px] text-sm font-semibold text-white"
             onClick={handleShowDeleteBook}>Delete</button>
         </div>
         {deleteBook ? 
           <div>
             <span className="text-red-600 font-semibold">Are you sure you want to delete this book?</span>
             <div>
-              <button className="bg-slate-100 hover:bg-slate-200 rounded-md p-2 m-1 text-sm font-semibold"
+              <button className="bg-slate-100 hover:bg-slate-200 rounded-md p-2 m-1 w-[40px] text-sm font-semibold"
                 onClick={handleDeleteBook}>Yes</button>
-              <button className="bg-slate-100 hover:bg-slate-200 rounded-md p-2 m-1 text-sm font-semibold"
+              <button className="bg-slate-100 hover:bg-slate-200 rounded-md p-2 m-1 w-[40px] text-sm font-semibold"
                 onClick={handleShowDeleteBook}>No</button>
             </div>
           </div> 
