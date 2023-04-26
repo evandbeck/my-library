@@ -47,7 +47,7 @@ function App() {
   }, []);
 
   return (
-    <div className="text-center">
+    <div className="text-center bg-slate-50 ">
       <h1 className="py-6 text-7xl font-bold">My Library</h1>
       <Header />
       <Reading reading={reading}/>

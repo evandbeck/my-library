@@ -8,7 +8,9 @@ function Read({ read }) {
   return (
     <div>
         <h1 className="py-4 text-3xl font-bold">Read</h1>
-        {readList}
+        <div className="container mx-auto p-2 grid grid-cols-3">
+          {readList}
+        </div>
     </div>
   )
 }

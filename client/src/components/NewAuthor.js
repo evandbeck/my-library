@@ -18,15 +18,14 @@ function NewAuthor() {
 
   return (
     <div>
-      <h1>Add New Author</h1>
       <form onSubmit={submitNewAuthor}>
-        <div>
-            <label>Author Name:</label>
-            <input type="text" required maxLength="30" value={authorName} onChange={(e) => setAuthorName(e.target.value)}/>
+        <div className="text-left ml-10">
+            <label className="font-semibold">Author Name:</label>
+            <input className="border-2 border-slate-100 rounded-lg ml-2" type="text" required maxLength="30" value={authorName} onChange={(e) => setAuthorName(e.target.value)}/>
             <span></span>
         </div>
         <div>
-          <button>Add Author</button>
+          <button className="bg-sky-500 hover:bg-sky-600 rounded-md p-2 m-2 text-sm font-semibold w-[120px] text-white">Add Author</button>
         </div>
       </form>
     </div>

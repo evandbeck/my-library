@@ -23,12 +23,14 @@ function Header() {
     }
     
   return (
-    <div>
-        <button className="bg-sky-500 hover:bg-sky-600 rounded-none p-3 m-2 font-semibold text-white" 
+    <div className="">
+        <button className="bg-sky-500 hover:bg-sky-600 active:bg-sky-700 focus:outline-none focus:ring focus:ring-sky-300 rounded-md w-[200px] p-3 m-2 font-semibold text-white" 
           onClick={handleShowAddBook}>
             {showAddBook ? "Close Form" : "Add New Book"}
         </button>
-        {showAddBook ? <NewBook authors={authors} showAddBook={showAddBook} setShowAddBook={setShowAddBook} /> : null}
+        <div className="flex flex-row justify-center items-center">
+          {showAddBook ? <NewBook authors={authors} showAddBook={showAddBook} setShowAddBook={setShowAddBook} /> : null}
+        </div>
     </div>
   )
 }
