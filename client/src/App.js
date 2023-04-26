@@ -47,12 +47,14 @@ function App() {
   }, []);
 
   return (
-    <div className="text-center bg-slate-50 ">
+    <div className="text-center bg-slate-50 pb-10">
       <h1 className="py-6 text-7xl font-bold">My Library</h1>
       <Header />
       <Reading reading={reading}/>
-      <Read read={read}/>
-      <Wishlist wishlist={wishlist}/>
+      <div className="container mx-auto p-2 grid grid-cols-2">
+        <Read read={read}/>
+        <Wishlist wishlist={wishlist}/>
+      </div>
       <Library library={library}/>
     </div>
   );

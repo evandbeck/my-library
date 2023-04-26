@@ -32,7 +32,7 @@ function Book({ book }) {
 
     const displayBookCard = (
       <div className="col-span-1 flex flex-col bg-white border shadow-md p-4 m-2 rounded-md hover:scale-105" onClick={handleShowBookDetails}>
-        <h3 className="font-bold text-xl">{title}</h3>
+        <h3 className="font-bold text-l">{title}</h3>
         {showBookDetails ? 
           <div>
             <p className="text-sm m-2">{description}</p>
