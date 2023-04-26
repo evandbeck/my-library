@@ -14,7 +14,7 @@ function Library({ library }) {
 
   return (
     <div className="BookContainer">
-        <h1>Library</h1>
+        <h1 className="py-4 text-3xl font-bold">Library</h1>
         {/* <button onClick={handleShowAddBook}>{showAddBook ? "Close Form" : "Add New Book"}</button>
         {showAddBook ? <NewBook /> : null} */}
         {libraryList}

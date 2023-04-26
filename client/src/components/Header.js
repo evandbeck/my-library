@@ -24,8 +24,10 @@ function Header() {
     
   return (
     <div>
-        <h1 className="font-bold">Header</h1>
-        <button onClick={handleShowAddBook}>{showAddBook ? "Close Form" : "Add New Book"}</button>
+        <button className="bg-sky-500 hover:bg-sky-600 rounded-none p-3 m-2 font-semibold text-white" 
+          onClick={handleShowAddBook}>
+            {showAddBook ? "Close Form" : "Add New Book"}
+        </button>
         {showAddBook ? <NewBook authors={authors} showAddBook={showAddBook} setShowAddBook={setShowAddBook} /> : null}
     </div>
   )

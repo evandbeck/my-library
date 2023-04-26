@@ -7,7 +7,7 @@ function Wishlist({ wishlist }) {
 
   return (
     <div>
-        <h1>Wishlist</h1>
+        <h1 className="py-4 text-3xl font-bold">Wishlist</h1>
         {wishlistList}
     </div>
   )

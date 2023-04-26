@@ -7,7 +7,7 @@ function Read({ read }) {
 
   return (
     <div>
-        <h1>Read</h1>
+        <h1 className="py-4 text-3xl font-bold">Read</h1>
         {readList}
     </div>
   )
