@@ -46,14 +46,24 @@ function App() {
     getAPILibrary().then(data => setLibrary(data));
   }, []);
 
-  function handleReadingState(newBook) {
-    setReading(reading => [...reading, newBook]);
+  function handleUpdateState(newBook) {
+    if (newBook.own === false) {
+      setWishlist(wishlist => [...wishlist, newBook]);
+    } else if (newBook.read === true) {
+      setRead(read => [...read, newBook])
+      setLibrary(library => [...library, newBook]);
+    } else if (newBook.open === true) {
+      setReading(reading => [...reading, newBook]);
+      setLibrary(library => [...library, newBook]);
+    } else {
+      setLibrary(library => [...library, newBook]);
+    }
   }
 
   return (
     <div className="text-center bg-slate-50 pb-10">
       <h1 className="py-6 text-7xl font-bold">My Library</h1>
-      <Header handleReadingState={handleReadingState}/>
+      <Header handleUpdateState={handleUpdateState}/>
       <Reading reading={reading}/>
       <div className="container mx-auto p-2 grid grid-cols-2">
         <Read read={read}/>

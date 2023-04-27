@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import NewAuthor from './NewAuthor';
 
-function NewBook({ authors, handleReadingState, showAddBook, setShowAddBook }) {
+function NewBook({ authors, handleUpdateState, showAddBook, setShowAddBook }) {
     const [bookTitle, setBookTitle] = useState("");
     const [bookAuthor, setBookAuthor] = useState(authors[0].id)
     const [bookDescription, setBookDescription] = useState("")
@@ -29,13 +29,13 @@ function NewBook({ authors, handleReadingState, showAddBook, setShowAddBook }) {
             author_id: bookAuthor
         }
         handleSubmitNewBookToDB(newBook);
-        handleReadingState(newBook);
+        handleUpdateState(newBook);
         setShowAddBook(showAddBook => !showAddBook)
     }
 
     function handleSubmitNewBookToDB(newBook) {
         axios.post(API_BOOKS, newBook)
-        .then(resp => console.log(resp))
+        // .then(resp => console.log(resp))
         .catch(error => console.log(error));
     }
 
