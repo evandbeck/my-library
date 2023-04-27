@@ -2,14 +2,47 @@ import React from 'react';
 import Book from './Book';
 import Sort from './Sort';
 
-function Read({ read }) {
+function Read({ read, setRead }) {
+
+    let sortReadAlphabetically = read.toSorted((a, b) => {
+      if (a.title < b.title) {
+        return -1;
+      } else if (a.title > b.title) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+
+    let sortReadRatingDesc = read.toSorted((a, b) => a.rating - b.rating);
+
+    let sortReadRatingAsc = read.toSorted((a, b) => b.rating - a.rating);
 
     let readList = read.map(book => <Book key={book.id} book={book} />)
+
+    function handleSortAlphabetically() {
+      readList = sortReadAlphabetically.map(book => <Book key={book.id} book={book} />)
+      setRead(sortReadAlphabetically);
+    }
+  
+    function handleSortRatingDesc() {
+      readList = sortReadRatingDesc.map(book => <Book key={book.id} book={book} />)
+      setRead(sortReadRatingDesc)
+    }
+
+    function handleSortRatingAsc() {
+      readList = sortReadRatingAsc.map(book => <Book key={book.id} book={book} />)
+      setRead(sortReadRatingAsc)
+    }
 
   return (
     <div className="bg-slate-100 rounded-lg m-2">
         <h1 className="py-4 pr-2 first-line:text-3xl font-bold">Read</h1>
-        <Sort />
+        <Sort 
+          handleSortAlphabetically={handleSortAlphabetically} 
+          handleSortRatingDesc={handleSortRatingDesc} 
+          handleSortRatingAsc={handleSortRatingAsc}
+        />
         <hr className="w-96 h-1 mx-auto my-1 bg-gray-200 border-0 rounded"></hr>
         <div className="container mx-auto p-2 grid grid-cols-2">
           {readList}

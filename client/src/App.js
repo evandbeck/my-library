@@ -66,7 +66,7 @@ function App() {
       <Header handleUpdateState={handleUpdateState}/>
       <Reading reading={reading}/>
       <div className="container mx-auto p-2 grid grid-cols-2">
-        <Read read={read}/>
+        <Read read={read} setRead={setRead}/>
         <Wishlist wishlist={wishlist}/>
       </div>
       <Library library={library}/>
