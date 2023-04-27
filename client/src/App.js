@@ -67,7 +67,7 @@ function App() {
       <Reading reading={reading}/>
       <div className="container mx-auto p-2 grid grid-cols-2">
         <Read read={read} setRead={setRead}/>
-        <Wishlist wishlist={wishlist}/>
+        <Wishlist wishlist={wishlist} setWishlist={setWishlist}/>
       </div>
       <Library library={library}/>
     </div>

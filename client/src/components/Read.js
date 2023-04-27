@@ -4,7 +4,7 @@ import Sort from './Sort';
 
 function Read({ read, setRead }) {
 
-    let sortReadAlphabetically = read.toSorted((a, b) => {
+    let sortAlphabetically = read.toSorted((a, b) => {
       if (a.title < b.title) {
         return -1;
       } else if (a.title > b.title) {
@@ -14,25 +14,25 @@ function Read({ read, setRead }) {
       }
     });
 
-    let sortReadRatingDesc = read.toSorted((a, b) => a.rating - b.rating);
+    let sortRatingDesc = read.toSorted((a, b) => a.rating - b.rating);
 
-    let sortReadRatingAsc = read.toSorted((a, b) => b.rating - a.rating);
+    let sortRatingAsc = read.toSorted((a, b) => b.rating - a.rating);
 
     let readList = read.map(book => <Book key={book.id} book={book} />)
 
     function handleSortAlphabetically() {
-      readList = sortReadAlphabetically.map(book => <Book key={book.id} book={book} />)
-      setRead(sortReadAlphabetically);
+      readList = sortAlphabetically.map(book => <Book key={book.id} book={book} />)
+      setRead(sortAlphabetically);
     }
   
     function handleSortRatingDesc() {
-      readList = sortReadRatingDesc.map(book => <Book key={book.id} book={book} />)
-      setRead(sortReadRatingDesc)
+      readList = sortRatingDesc.map(book => <Book key={book.id} book={book} />)
+      setRead(sortRatingDesc)
     }
 
     function handleSortRatingAsc() {
-      readList = sortReadRatingAsc.map(book => <Book key={book.id} book={book} />)
-      setRead(sortReadRatingAsc)
+      readList = sortRatingAsc.map(book => <Book key={book.id} book={book} />)
+      setRead(sortRatingAsc)
     }
 
   return (
