@@ -16,11 +16,13 @@ function Book({ book }) {
       setShowBookDetails(showBookDetails => !showBookDetails)
     }
     
-    function handleShowEditBook() {
+    function handleShowEditBook(e) {
+      e.stopPropagation();
       setEditBook(editBook => !editBook)
     }
 
-    function handleShowDeleteBook() {
+    function handleShowDeleteBook(e) {
+      e.stopPropagation();
       setDeleteBook(deleteBook => !deleteBook)
     }
 
@@ -43,9 +45,9 @@ function Book({ book }) {
             <hr className="m-3"></hr>
             <div>
               <button className="bg-sky-500 hover:bg-sky-600 rounded-md p-2 m-2 w-[80px] text-sm font-semibold text-white"
-                onClick={handleShowEditBook}>Edit</button>
+                onClick={(e) => handleShowEditBook(e)}>Edit</button>
               <button className="bg-sky-500 hover:bg-sky-600 rounded-md p-2 m-2 w-[80px] text-sm font-semibold text-white"
-                onClick={handleShowDeleteBook}>Delete</button>
+                onClick={(e) => handleShowDeleteBook(e)}>Delete</button>
             </div>
             {deleteBook ? 
               <div>

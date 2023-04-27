@@ -10,14 +10,14 @@ function Library({ library }) {
 
     let libraryBooks = filteredLibrary.map(book => <Book key={book.id} book={book} />)
 
-    const height = document.querySelector('#library').offsetHeight;
+    // const height = document.querySelector('#library').offsetHeight;
 
-    const dynamicHeight = `min-h-[${height}]`
+    // const dynamicHeight = `min-h-[${height}]`
 
-    console.log(dynamicHeight);
+    // console.log(dynamicHeight);
 
   return (
-    <div id="library" className={`${dynamicHeight}`}>
+    <div id="library" className="">
         <h1 className="py-4 text-3xl font-bold">Library</h1>
         <Search search={search} setSearch={setSearch}/>
         <hr className="w-96 h-1 mx-auto my-1 bg-gray-200 border-0 rounded"></hr>
