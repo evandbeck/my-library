@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import NewBook from './NewBook';
 
-function Header() {
+function Header({ handleReadingState }) {
     const [showAddBook, setShowAddBook] = useState(false)
     const [authors, setAuthors] = useState([]);
 
@@ -29,7 +29,7 @@ function Header() {
             {showAddBook ? "Close Form" : "Add New Book"}
         </button>
         <div className="flex flex-row justify-center items-center">
-          {showAddBook ? <NewBook authors={authors} showAddBook={showAddBook} setShowAddBook={setShowAddBook} /> : null}
+          {showAddBook ? <NewBook authors={authors} showAddBook={showAddBook} handleReadingState={handleReadingState} setShowAddBook={setShowAddBook} /> : null}
         </div>
     </div>
   )

@@ -3,9 +3,9 @@ import React from 'react';
 import { useState } from 'react';
 import NewAuthor from './NewAuthor';
 
-function NewBook({ authors, showAddBook, setShowAddBook }) {
+function NewBook({ authors, handleReadingState, showAddBook, setShowAddBook }) {
     const [bookTitle, setBookTitle] = useState("");
-    const [bookAuthor, setBookAuthor] = useState("")
+    const [bookAuthor, setBookAuthor] = useState(authors[0].id)
     const [bookDescription, setBookDescription] = useState("")
     const [bookRead, setBookRead] = useState(false)
     const [bookRating, setBookRating] = useState(0)
@@ -19,7 +19,7 @@ function NewBook({ authors, showAddBook, setShowAddBook }) {
 
     function submitNewBook(e) {
         e.preventDefault();
-        axios.post(API_BOOKS, {
+        const newBook = {
             title: bookTitle,
             description: bookDescription,
             read: bookRead,
@@ -27,10 +27,16 @@ function NewBook({ authors, showAddBook, setShowAddBook }) {
             own: bookOwned,
             open: bookOpen,
             author_id: bookAuthor
-        })
+        }
+        handleSubmitNewBookToDB(newBook);
+        handleReadingState(newBook);
+        setShowAddBook(showAddBook => !showAddBook)
+    }
+
+    function handleSubmitNewBookToDB(newBook) {
+        axios.post(API_BOOKS, newBook)
         .then(resp => console.log(resp))
         .catch(error => console.log(error));
-        setShowAddBook(showAddBook => !showAddBook)
     }
 
     function handleShowAddAuthor(e) {
@@ -51,7 +57,6 @@ function NewBook({ authors, showAddBook, setShowAddBook }) {
     }
 
   return (
-    // I need to learn this shit.
     <div className="bg-white w-[33%] border shadow-md p-4 m-2 rounded-md">
         <h1 className="text-lg font-semibold">Add New Book</h1>
         <hr className="m-3"></hr>
@@ -60,23 +65,21 @@ function NewBook({ authors, showAddBook, setShowAddBook }) {
                 <div className="mb-2">
                     <label className="font-semibold">Title:</label>
                     <input className="border-2 border-slate-10 rounded-lg ml-2" type="text" required maxLength="30" value={bookTitle} onChange={(e) => setBookTitle(e.target.value)}/>
-                    <span></span>
                 </div>
                 <div className="mb-2">
                     <label className="font-semibold">Author:</label>
-                    <select className="border-2 border-slate-100 rounded-lg ml-2" id="author" name="author" value={bookAuthor} onChange={(e) => setBookAuthor(e.target.value)}>
+                    <select className="border-2 border-slate-100 rounded-lg ml-2" id="author" required value={bookAuthor} onChange={(e) => setBookAuthor(e.target.value)}>
+                        <option selected disabled>Select author</option>
                         {authorList}
                     </select>
                 </div>
                 <div className="mb-2">
                     <label className="font-semibold">Description:</label>
                     <input className="border-2 border-slate-100 rounded-lg ml-2" type="text" required maxLength="100" value={bookDescription} onChange={(e) => setBookDescription(e.target.value)} size="50"/>
-                    <span></span>
                 </div>
                 <div className="mb-2">
                     <label className="font-semibold">Owned?</label>
                     <input className="ml-2 w-4 h-4 text-sky-600 bg-gray-100 border-gray-300 rounded focus:ring-sky-500" type="checkbox" id="owned" name="owned" checked={bookOwned} onChange={handleOwned}/>
-                    <span></span>
                 </div>
 
                 {bookOwned ? 
@@ -84,23 +87,21 @@ function NewBook({ authors, showAddBook, setShowAddBook }) {
                         <div className="mb-2">
                             <label className="font-semibold">Read?</label>
                             <input className="ml-2 w-4 h-4 text-sky-600 bg-gray-100 border-gray-300 rounded focus:ring-sky-500" type="checkbox" id="read" name="read" checked={bookRead} onChange={handleRead}/>
-                            <span></span>
                         </div>
                         <div className="mb-2">
                             <label className="font-semibold">Currently Reading?</label>
                             <input className="ml-2 w-4 h-4 text-sky-600 bg-gray-100 border-gray-300 rounded focus:ring-sky-500" type="checkbox" id="open" name="open" checked={bookOpen} onChange={handleOpen}/>
-                            <span></span>
                         </div>
                         <div className="mb-2">
                             <label className="font-semibold">Rating: </label>
                             <select className="border-2 border-slate-100 rounded-lg ml-2" id="rating" name="rating" value={bookRating} onChange={(e) => setBookRating(e.target.value)}>
+                                <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option> 
                                 <option value="3">3</option> 
                                 <option value="4">4</option>  
                                 <option value="5">5</option> 
                             </select>
-                            <span></span>
                         </div>
                     </div> 
                 : null}

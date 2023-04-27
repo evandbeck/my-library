@@ -46,10 +46,14 @@ function App() {
     getAPILibrary().then(data => setLibrary(data));
   }, []);
 
+  function handleReadingState(newBook) {
+    setReading(reading => [...reading, newBook]);
+  }
+
   return (
     <div className="text-center bg-slate-50 pb-10">
       <h1 className="py-6 text-7xl font-bold">My Library</h1>
-      <Header />
+      <Header handleReadingState={handleReadingState}/>
       <Reading reading={reading}/>
       <div className="container mx-auto p-2 grid grid-cols-2">
         <Read read={read}/>
